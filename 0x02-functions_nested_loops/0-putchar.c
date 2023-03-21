@@ -1,15 +1,12 @@
-#include "main.h"
-
+#include "holberton.h"
 /**
- * main - entry point
+ * main - Entry point
  *
- *
- * Return: always return 0
- *
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
-	char *sh = "_putchar";
+	char *sh = "Holberton";
 
 	while (*sh)
 	{
@@ -18,5 +15,5 @@ int main(void)
 	}
 	_putchar('\n');
 
-	return (0);	
+	return (0);
 }
