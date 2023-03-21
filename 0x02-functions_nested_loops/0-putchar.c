@@ -1,6 +1,3 @@
-#include <stdlib.h>
-#include <time.h>
-#include <stdio.h>
 #include <main.h>
 
 /**
@@ -21,5 +18,17 @@ int main(void)
 	_putchar('a');
 	_putchar('r');
 	_putchar('\n');
+
+	int main(void)
+{
+	char *sh = "_putchar";
+
+	while (*sh)
+	{
+		_putchar(*sh);
+		sh++;
+	}
+	_putchar('\n');
+
 	return (0);	
 }
