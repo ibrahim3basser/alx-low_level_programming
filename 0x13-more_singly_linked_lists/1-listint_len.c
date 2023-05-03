@@ -1,21 +1,18 @@
-#include <stdio.h>
 #include "lists.h"
-
 /**
- * listint_len - Find the length of a list
- * @h: The pointer to the start of the list
- *
- * Return: Number of nodes in the list
+ * listint_len - length of linked list
+ * @h: struct to go through
+ * Return: amount of elements
  */
 size_t listint_len(const listint_t *h)
 {
-	size_t nodecount;
+	size_t count = 0;
 
-	nodecount = 0;
 	while (h != NULL)
 	{
-		nodecount++;
+		count++;
 		h = h->next;
 	}
-	return (nodecount);
-}}
+
+	return (count);
+}
