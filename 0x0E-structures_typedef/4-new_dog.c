@@ -1,50 +1,91 @@
-9#include <stdio.h>
 #include <stdlib.h>
 #include "dog.h"
 
-/**
- * new_dog - creates a new dog
- * @name: dog's name
- * @age: dog's age
- * @owner: dog's owner
- *
- * Return: a pointer to the structure
- */
+int _strlen(char *s);
+char *_strcpy(char *dest, char *src);
 
+/**
+  * new_dog - ...
+  * @name: ...
+  * @age: ...
+  * @owner: ...
+  *
+  * Return: ...
+  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	int i, j, k;
-	dog_t *p;
+	dog_t *cutie_dog;
+	int name_l = 0, own_l = 0;
 
-	p = malloc(sizeof(dog_t));
+	if (name != NULL && owner != NULL)
+	{
+		name_l = _strlen(name) + 1;
+		own_l = _strlen(owner) + 1;
+		cutie_dog = malloc(sizeof(dog_t));
 
-	if (p == NULL)
-	{
-		free(p);
-		return (NULL);
-	}
-	for (i = 0; name[i]; i++)
-		;
-	for (j = 0; owner[j]; j++)
-		;
-	p->name = malloc(i + 1);
-	p->owner = malloc(j + 1);
+		if (cutie_dog == NULL)
+			return (NULL);
 
-	if (p->name == NULL || p->owner == NULL)
-	{
-		free(p->name), free(p->owner), free(p);
-		return (NULL);
+		cutie_dog->name = malloc(sizeof(char) * name_l);
+
+		if (cutie_dog->name == NULL)
+		{
+			free(cutie_dog);
+			return (NULL);
+		}
+
+		cutie_dog->owner = malloc(sizeof(char) * own_l);
+
+		if (cutie_dog->owner == NULL)
+		{
+			free(cutie_dog->name);
+			free(cutie_dog);
+			return (NULL);
+		}
+
+		cutie_dog->name = _strcpy(cutie_dog->name, name);
+		cutie_dog->owner = _strcpy(cutie_dog->owner, owner);
+		cutie_dog->age = age;
 	}
-	for (k = 0; k < i; k++)
-	{
-		p->name[k] = name[k];
-	}
-	p->name[k] = '\0';
-	for (k = 0; k < j; k++)
-	{
-		p->owner[k] = owner[k];
-	}
-	p->owner[k] = '\0';
-	p->age = age;
-	return (p);
+
+	return (cutie_dog);
 }
+
+/**
+  * _strlen - Returns the length of a string
+  * @s: String to count
+  *
+  * Return: String length
+  */
+int _strlen(char *s)
+{
+	int c = 0;
+
+	for (; *s != '\0'; s++)
+	{
+		c++;
+	}
+
+	return (c);
+}
+
+/**
+  * _strcpy - Copy a string
+  * @dest: Destination value
+  * @src: Source value
+  *
+  * Return: the pointer to dest
+  */
+char *_strcpy(char *dest, char *src)
+{
+	int i;
+
+	for (i = 0; src[i] != '\0'; i++)
+	{
+		dest[i] = src[i];
+	}
+
+	dest[i++] = '\0';
+
+	return (dest);
+}}
